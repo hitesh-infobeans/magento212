@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.avectra.com/2005/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://www.avectra.com/2005/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Avectra Xml Web Services release: http://www.avectra.com/2005/ -   For additional information or for questions concerning xWeb please navigate to netForum xWeb Online help at http://demo.avectra.com/xWebHelp/index.htm.  Please note: all xWeb message exchanges are recommended to occur over SSL.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.avectra.com/2005/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ICCWEBWebUserValidateToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="authenticationToken" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ICCWEBWebUserValidateTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ICCWEBWebUserValidateTokenResult" type="tns:ICCWebUserType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthorizationToken" type="tns:AuthorizationToken" />
+      <s:complexType name="AuthorizationToken">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Token" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="Authenticate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="userName" nillable="true" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="password" nillable="true" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthenticateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AuthenticateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ICCWebUser" type="tns:ICCWebUserType" />
+      <s:complexType name="ICCWebUserType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentKey" nillable="true" type="tns:av_key_Type">
+            <s:annotation>
+              <s:documentation>Primary Key.The current key is the record key for the object. This field must be set whenever updating an existing database record.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element name="Individual" type="tns:ICCWebUser_Individual_DataObjectType" />
+          <s:element name="Customer" type="tns:ICCWebUser_Customer_DataObjectType" />
+          <s:element name="Email" type="tns:ICCWebUser_Email_DataObjectType" />
+          <s:element name="Business_Address" type="tns:ICCWebUser_Business_Address_DataObjectType" />
+          <s:element name="Business_Phone" type="tns:ICCWebUser_Business_Phone_DataObjectType" />
+          <s:element name="Business_Phone_XRef" type="tns:ICCWebUser_Business_Phone_XRef_DataObjectType" />
+          <s:element name="Business_Fax" type="tns:ICCWebUser_Business_Fax_DataObjectType" />
+          <s:element name="Business_Fax_XRef" type="tns:ICCWebUser_Business_Fax_XRef_DataObjectType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Individual_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_cst_key" nillable="true" type="tns:av_key_Type">
+            <s:annotation>
+              <s:documentation>Primary Key.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_first_name" nillable="true" type="tns:stringLength30_Type">
+            <s:annotation>
+              <s:documentation>First Name.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_mid_name" nillable="true" type="tns:stringLength30_Type">
+            <s:annotation>
+              <s:documentation>Middle Name.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_last_name" nillable="true" type="tns:stringLength30_Type">
+            <s:annotation>
+              <s:documentation>Last Name.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_full_name_cp" nillable="true" type="tns:stringLength187_Type">
+            <s:annotation>
+              <s:documentation>Full Name.  This field is automatically calculated within netForum and cannot be updated via netForum xWeb.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_token" nillable="true" type="tns:av_key_Type">
+            <s:annotation>
+              <s:documentation>User Token.  This field is automatically calculated within netForum and cannot be updated via netForum xWeb.This field is NOT a Data Field and is Read-Only.  </s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_pin_ext" nillable="true" type="tns:av_integer_Type">
+            <s:annotation>
+              <s:documentation>PIN.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="ind_dob" nillable="true" type="tns:av_date_Type">
+            <s:annotation>
+              <s:documentation>Date of Birth.  This field has this Input Mask: 99/99/9999.</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Customer_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cst_recno" nillable="true" type="tns:av_recno_Type">
+            <s:annotation>
+              <s:documentation>Record Number.  This field is automatically calculated within netForum and cannot be updated via netForum xWeb.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="cst_web_login" nillable="true" type="tns:stringLength80_Type">
+            <s:annotation>
+              <s:documentation>Web Login.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="cst_new_password" nillable="true" type="tns:stringLength0_Type">
+            <s:annotation>
+              <s:documentation>New Password.  This field has this Input Mask: regex:^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[A-Za-z0-9!@#$%^&amp;*()_]{6,14}$.This field is NOT a Data Field and is Read-Only.  </s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="cst_new_password_confirm" nillable="true" type="tns:stringLength0_Type">
+            <s:annotation>
+              <s:documentation>Confirm New Password.This field is NOT a Data Field and is Read-Only.  </s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="cst_cdp_ext" nillable="true" type="tns:av_flag_Type">
+            <s:annotation>
+              <s:documentation>CDP Admin.This element has a default value of '0'.  </s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Email_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="eml_address" nillable="true" type="tns:av_email_Type">
+            <s:annotation>
+              <s:documentation>E-Mail Address.</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Business_Address_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="adr_city" nillable="true" type="tns:stringLength40_Type">
+            <s:annotation>
+              <s:documentation>City.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="adr_state" nillable="true" type="tns:stringLength40_Type">
+            <s:annotation>
+              <s:documentation>State/Territory.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="adr_post_code" nillable="true" type="tns:stringLength20_Type">
+            <s:annotation>
+              <s:documentation>Postal Code.</s:documentation>
+            </s:annotation>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="1" name="adr_country" nillable="true" type="tns:stringLength60_Type">
+            <s:annotation>
+              <s:documentation>Country.This element has a default value of 'UNITED STATES'.  </s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Business_Phone_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="phn_number" nillable="true" type="tns:av_phone_Type">
+            <s:annotation>
+              <s:documentation>Phone Number.</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Business_Phone_XRef_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cph_extension" nillable="true" type="tns:stringLength10_Type">
+            <s:annotation>
+              <s:documentation>ph. ext..</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Business_Fax_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="fax_number" nillable="true" type="tns:av_fax_Type">
+            <s:annotation>
+              <s:documentation>Fax Number.</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ICCWebUser_Business_Fax_XRef_DataObjectType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cfx_extension" nillable="true" type="tns:stringLength10_Type">
+            <s:annotation>
+              <s:documentation>Fax Extension.</s:documentation>
+            </s:annotation>
+          </s:element>
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ICCWEBWebUserValidateTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:ICCWEBWebUserValidateToken" />
+  </wsdl:message>
+  <wsdl:message name="ICCWEBWebUserValidateTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:ICCWEBWebUserValidateTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICCWEBWebUserValidateTokenAuthorizationToken">
+    <wsdl:part name="AuthorizationToken" element="tns:AuthorizationToken" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapIn">
+    <wsdl:part name="parameters" element="tns:Authenticate" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateSoapOut">
+    <wsdl:part name="parameters" element="tns:AuthenticateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AuthenticateAuthorizationToken">
+    <wsdl:part name="AuthorizationToken" element="tns:AuthorizationToken" />
+  </wsdl:message>
+  <wsdl:portType name="netForumXMLSoap">
+    <wsdl:operation name="ICCWEBWebUserValidateToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Provides the Web User info for the authenticated token that is passed as a parameter - this method can be invoked after a successful Login that returns an authentication token.  The authentication token is the only parameter for this method.</wsdl:documentation>
+      <wsdl:input message="tns:ICCWEBWebUserValidateTokenSoapIn" />
+      <wsdl:output message="tns:ICCWEBWebUserValidateTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Passing correct credentials to this method will return an authentication token - without an authentication token, the rest of the xWeb web methods will be inoperable.  The authentication token is governed by the group privileges assigned to the account invoking the xWeb web methods.  Please consult with the administrator of the netForum database to ensure your level of authorization.  This method MUST be the first method invoked at xWeb, as the authentication token that is returned is required for every xWeb method.</wsdl:documentation>
+      <wsdl:input message="tns:AuthenticateSoapIn" />
+      <wsdl:output message="tns:AuthenticateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="netForumXMLSoap" type="tns:netForumXMLSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ICCWEBWebUserValidateToken">
+      <soap:operation soapAction="http://www.avectra.com/2005/ICCWEBWebUserValidateToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:ICCWEBWebUserValidateTokenAuthorizationToken" part="AuthorizationToken" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:ICCWEBWebUserValidateTokenAuthorizationToken" part="AuthorizationToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://www.avectra.com/2005/Authenticate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+        <soap:header message="tns:AuthenticateAuthorizationToken" part="AuthorizationToken" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="netForumXML">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Avectra Xml Web Services release: http://www.avectra.com/2005/ -   For additional information or for questions concerning xWeb please navigate to netForum xWeb Online help at http://demo.avectra.com/xWebHelp/index.htm.  Please note: all xWeb message exchanges are recommended to occur over SSL.</wsdl:documentation>
+    <wsdl:port name="netForumXMLSoap" binding="tns:netForumXMLSoap">
+      <soap:address location="https://av.iccsafe.org/xweb/secure/ICCWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
