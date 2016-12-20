@@ -2,13 +2,14 @@
 <ul class="faq-list">
 <?php foreach ($block->getFaqs() as $faq): ?>
     <li class="faq-list-item">
-        <h3 class="faq-item-title">
+        <h3 class="faq-item-title accordion">
             <?php echo $faq->getTitle() ?>
         </h3>
 
-        <div class="faq-item-content">
+        <div class="panel faq-item-content">
             <?php echo $faq->getContent(); ?>
         </div> 
     </li>
 <?php endforeach; ?>
-</ul>
+</ul> 
+ 

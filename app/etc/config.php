@@ -2,7 +2,7 @@
 return array (
   'modules' => 
   array (
-    'Infobeans_Avectra' => 1,
+    'Infobeans_Faq' => 1,
     'Magento_Store' => 1,
     'Magento_AdvancedPricingImportExport' => 1,
     'Magento_Directory' => 1,
