@@ -1,0 +1,15 @@
+<h1><?php echo __('Faqs') ?></h1>
+<ul class="faq-list">
+<?php foreach ($block->getFaqs() as $faq): ?>
+    <li class="faq-list-item">
+        <h3 class="faq-item-title accordion">
+            <?php echo $faq->getTitle() ?>
+        </h3>
+
+        <div class="panel faq-item-content">
+            <?php echo $faq->getContent(); ?>
+        </div> 
+    </li>
+<?php endforeach; ?>
+</ul> 
+ 
