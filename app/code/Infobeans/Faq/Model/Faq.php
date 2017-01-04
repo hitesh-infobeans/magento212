@@ -1,10 +1,10 @@
-<?php 
+<?php
 namespace Infobeans\Faq\Model;
 
 use Infobeans\Faq\Api\Data\FaqInterface;
 use Magento\Framework\DataObject\IdentityInterface;
 
-class Faq  extends \Magento\Framework\Model\AbstractModel implements FaqInterface, IdentityInterface
+class Faq extends \Magento\Framework\Model\AbstractModel implements FaqInterface, IdentityInterface
 {
 
      
@@ -77,7 +77,7 @@ class Faq  extends \Magento\Framework\Model\AbstractModel implements FaqInterfac
     public function setId($id)
     {
         return $this->setData(self::FAQ_ID, $id);
-    } 
+    }
 
      
     public function setTitle($title)
@@ -101,11 +101,10 @@ class Faq  extends \Magento\Framework\Model\AbstractModel implements FaqInterfac
     public function setUpdateTime($update_time)
     {
         return $this->setData(self::UPDATE_TIME, $update_time);
-    } 
+    }
      
     public function setIsActive($is_active)
     {
         return $this->setData(self::IS_ACTIVE, $is_active);
     }
-
 }

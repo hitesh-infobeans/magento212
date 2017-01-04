@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Infobeans\Faq\Model\ResourceModel\Faq;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
@@ -19,5 +19,4 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     {
         $this->_init('Infobeans\Faq\Model\Faq', 'Infobeans\Faq\Model\ResourceModel\Faq');
     }
-
 }

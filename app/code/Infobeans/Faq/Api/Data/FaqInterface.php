@@ -1,11 +1,10 @@
 <?php
 namespace Infobeans\Faq\Api\Data;
 
-
 interface FaqInterface
 {
     
-    const FAQ_ID       = 'faq_id';    
+    const FAQ_ID       = 'faq_id';
     const TITLE         = 'title';
     const CONTENT       = 'content';
     const CREATION_TIME = 'creation_time';
@@ -58,7 +57,7 @@ interface FaqInterface
     /**
      * Set ID
      *
-     * @param int $id     
+     * @param int $id
      */
     public function setId($id);
 
@@ -66,35 +65,35 @@ interface FaqInterface
     /**
      * Set title
      *
-     * @param string $title     
+     * @param string $title
      */
     public function setTitle($title);
 
     /**
      * Set content
      *
-     * @param string $content     
+     * @param string $content
      */
     public function setContent($content);
 
     /**
      * Set creation time
      *
-     * @param string $creationTime     
+     * @param string $creationTime
      */
     public function setCreationTime($creationTime);
 
     /**
      * Set update time
      *
-     * @param string $updateTime     
+     * @param string $updateTime
      */
     public function setUpdateTime($updateTime);
 
     /**
      * Set is active
      *
-     * @param int|bool $isActive    
+     * @param int|bool $isActive
      */
     public function setIsActive($isActive);
 }

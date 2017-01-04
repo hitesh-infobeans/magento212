@@ -9,12 +9,12 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
 {
      /**
      * @var \Infobeans\Faq\Model\ResourceModel\Faq\CollectionFactory
-     */    
+     */
     protected $_faqCollectionFactory;
     
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */  
+     */
     protected $scopeConfig;
     
     /**
@@ -40,9 +40,9 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
     /**
      * Return Page Title
      * @return \Magento\Framework\App\Config\ScopeConfigInterface
-     */     
+     */
     
-     public function getPageTitle()
+    public function getPageTitle()
     {
         return $this->scopeConfig->getValue(
             'faq_section/general/page_title',
@@ -100,28 +100,30 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         $pageTitle = $this->getPageTitle();
         $metaTitle = $this->getMetaTitle();
         $metaKeyword = $this->getMetaKeyword();
-        $metaDescription = $this->getMetaDescription(); 
+        $metaDescription = $this->getMetaDescription();
         $pageMainTitle = $this->getLayout()->getBlock('page.main.title');
         
         if ($pageTitle && $pageMainTitle) {
                 $pageMainTitle->setPageTitle($pageTitle);
         }
        
-        if($metaTitle!="")
+        if ($metaTitle!="") {
             $this->pageConfig->getTitle()->set($metaTitle);
-        if($metaKeyword!="")
+        }
+        if ($metaKeyword!="") {
             $this->pageConfig->setKeywords($metaKeyword);
+        }
         
-         if($metaDescription!="")
-            $this->pageConfig->setDescription($metaDescription); 
-        
+        if ($metaDescription!="") {
+            $this->pageConfig->setDescription($metaDescription);
+        }
     }
     
     /**
      * @return \Infobeans\Faq\Model\ResourceModel\Faq\Collection
-     */    
+     */
     public function getFaqs()
-    {    
+    {
         if (!$this->hasData('faqs')) {
             $faqs = $this->_faqCollectionFactory
                 ->create()
@@ -146,5 +148,4 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
     {
         return [\Infobeans\Faq\Model\Faq::CACHE_TAG . '_' . 'list'];
     }
-
 }

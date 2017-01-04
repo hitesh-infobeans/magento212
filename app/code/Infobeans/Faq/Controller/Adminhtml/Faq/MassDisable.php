@@ -9,7 +9,7 @@ use Magento\Framework\Controller\ResultFactory;
 /**
  * Class MassDisable
  */
-class MassDisable  extends \Magento\Backend\App\Action
+class MassDisable extends \Magento\Backend\App\Action
 {
     /**
      * @var Filter

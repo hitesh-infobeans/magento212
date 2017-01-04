@@ -7,7 +7,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      * Core registry
      *
      * @var \Magento\Framework\Registry
-     */ 
+     */
     protected $_coreRegistry = null;
 
     /**
@@ -28,7 +28,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      * Initialize faq edit block
      *
      * @return void
-     */ 
+     */
     protected function _construct()
     {
         $this->_objectId = 'faq_id';
@@ -82,7 +82,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      *
      * @param string $resourceId
      * @return bool
-     */ 
+     */
     protected function _isAllowedAction($resourceId)
     {
         return $this->_authorization->isAllowed($resourceId);
@@ -93,7 +93,7 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      * tab_id will be replaced by desired by JS later
      *
      * @return string
-     */ 
+     */
     protected function _getSaveAndContinueUrl()
     {
         return $this->getUrl('faq/*/save', ['_current' => true, 'back' => 'edit', 'active_tab' => '']);

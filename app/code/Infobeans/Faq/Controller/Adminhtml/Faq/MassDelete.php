@@ -8,17 +8,17 @@ use Magento\Framework\Controller\ResultFactory;
 
 /**
  * Class MassDelete
- */ 
-class MassDelete  extends \Magento\Backend\App\Action
+ */
+class MassDelete extends \Magento\Backend\App\Action
 {
      /**
      * @var Filter
-     */ 
+     */
     protected $filter;
 
     /**
      * @var CollectionFactory
-     */ 
+     */
     protected $collectionFactory;
 
 
@@ -39,7 +39,7 @@ class MassDelete  extends \Magento\Backend\App\Action
      *
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws \Magento\Framework\Exception\LocalizedException|\Exception
-     */    
+     */
     public function execute()
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
@@ -51,7 +51,7 @@ class MassDelete  extends \Magento\Backend\App\Action
 
         $this->messageManager->addSuccess(__('A total of %1 record(s) have been deleted.', $collectionSize));
 
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */ 
+        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         return $resultRedirect->setPath('*/*/');
     }

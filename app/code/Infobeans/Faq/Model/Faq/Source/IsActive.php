@@ -12,7 +12,7 @@ class IsActive implements \Magento\Framework\Data\OptionSourceInterface
      * Constructor
      *
      * @param \Infobeans\Faq\Model\Faq $faq
-     */ 
+     */
     public function __construct(\Infobeans\Faq\Model\Faq $faq)
     {
         $this->faq = $faq;

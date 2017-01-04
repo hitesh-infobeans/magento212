@@ -5,10 +5,11 @@ use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 
 class Save extends \Magento\Backend\App\Action
-{ 
+{
+
     /**
      * {@inheritdoc}
-     */ 
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Infobeans_Faq::faq');
@@ -18,7 +19,7 @@ class Save extends \Magento\Backend\App\Action
      * Save action
      *
      * @return \Magento\Framework\Controller\ResultInterface
-     */ 
+     */
     public function execute()
     {
        
@@ -26,7 +27,6 @@ class Save extends \Magento\Backend\App\Action
             
         $resultRedirect = $this->resultRedirectFactory->create();
         if ($data) {
-           
             $model = $this->_objectManager->create('Infobeans\Faq\Model\Faq');
 
             $id = $this->getRequest()->getParam('faq_id');

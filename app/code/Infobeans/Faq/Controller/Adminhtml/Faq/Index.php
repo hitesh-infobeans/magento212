@@ -15,7 +15,7 @@ class Index extends \Magento\Backend\App\Action
     /**
      * @param Context $context
      * @param PageFactory $resultPageFactory
-     */    
+     */
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -30,7 +30,7 @@ class Index extends \Magento\Backend\App\Action
      * @return \Magento\Backend\Model\View\Result\Page
      */
     public function execute()
-    { 
+    {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Infobeans_Faq::faq');
@@ -45,11 +45,9 @@ class Index extends \Magento\Backend\App\Action
      * Is the user allowed to view the faq grid.
      *
      * @return bool
-     */ 
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Infobeans_Faq::faq');
     }
-
-
 }

@@ -9,19 +9,19 @@ class Edit extends \Magento\Backend\App\Action
      * Core registry
      *
      * @var \Magento\Framework\Registry
-     */ 
+     */
     protected $_coreRegistry = null;
 
     /**
      * @var \Magento\Framework\View\Result\PageFactory
-     */ 
+     */
     protected $resultPageFactory;
 
     /**
      * @param Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      * @param \Magento\Framework\Registry $registry
-     */ 
+     */
     public function __construct(
         Action\Context $context,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
@@ -36,7 +36,7 @@ class Edit extends \Magento\Backend\App\Action
      * Is the user allowed to add/edit faq.
      *
      * @return bool
-     */  
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Infobeans_Faq::faq');
@@ -47,7 +47,7 @@ class Edit extends \Magento\Backend\App\Action
      * Init actions
      *
      * @return \Magento\Backend\Model\View\Result\Page
-     */ 
+     */
     protected function _initAction()
     {
          
@@ -61,8 +61,8 @@ class Edit extends \Magento\Backend\App\Action
     /**
      * Edit Faq
      *
-     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect     
-     */ 
+     * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('faq_id');

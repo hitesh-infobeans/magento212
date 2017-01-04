@@ -18,7 +18,7 @@ class MassEnable extends \Magento\Backend\App\Action
 
      /**
      * @var CollectionFactory
-     */ 
+     */
     protected $collectionFactory;
 
 
@@ -26,7 +26,7 @@ class MassEnable extends \Magento\Backend\App\Action
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
-     */ 
+     */
     public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
     {
         $this->filter = $filter;

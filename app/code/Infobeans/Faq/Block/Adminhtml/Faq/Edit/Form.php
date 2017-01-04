@@ -3,13 +3,13 @@ namespace Infobeans\Faq\Block\Adminhtml\Faq\Edit;
 
 /**
  * Adminhtml faq edit form
- */ 
+ */
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
 
     /**
      * @var \Magento\Store\Model\System\Store
-     */  
+     */
     protected $_systemStore;
 
     /**
@@ -35,7 +35,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * Init form
      *
      * @return void
-     */ 
+     */
     protected function _construct()
     {
         parent::_construct();
@@ -47,7 +47,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * Prepare form
      *
      * @return $this
-     */ 
+     */
     protected function _prepareForm()
     {
         

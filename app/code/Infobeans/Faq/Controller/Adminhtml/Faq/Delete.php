@@ -11,7 +11,7 @@ class Delete extends \Magento\Backend\App\Action
      * Is the user allowed to delete faq.
      *
      * @return bool
-     */   
+     */
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Infobeans_Faq::faq');
@@ -21,7 +21,7 @@ class Delete extends \Magento\Backend\App\Action
      * Delete action
      *
      * @return \Magento\Framework\Controller\ResultInterface
-     */ 
+     */
     public function execute()
     {
         $id = $this->getRequest()->getParam('faq_id');

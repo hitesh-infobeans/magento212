@@ -10,7 +10,7 @@ class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
-     */ 
+     */
     protected $_date;
 
     /**
@@ -45,11 +45,11 @@ class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      * Process faq data before saving
      *
      * @param \Magento\Framework\Model\AbstractModel $object
-     * @return $this     
+     * @return $this
      */
     
     protected function _beforeSave(\Magento\Framework\Model\AbstractModel $object)
-    { 
+    {
 
         if ($object->isObjectNew() && !$object->hasCreationTime()) {
             $object->setCreationTime($this->_date->gmtDate());
@@ -75,7 +75,6 @@ class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $select = parent::_getLoadSelect($field, $value, $object);
 
         if ($object->getStoreId()) {
-
             $select->where(
                 'is_active = ?',
                 1
@@ -85,6 +84,5 @@ class Faq extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         }
 
         return $select;
-    } 
- 
+    }
 }

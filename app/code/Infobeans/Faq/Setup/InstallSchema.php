@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace Infobeans\Faq\Setup;
 
 use Magento\Framework\Setup\InstallSchemaInterface;
@@ -36,12 +36,11 @@ class InstallSchema implements InstallSchemaInterface
             ->addColumn('content', Table::TYPE_TEXT, '2M', [], 'Faq Answer')
             ->addColumn('is_active', Table::TYPE_SMALLINT, null, ['nullable' => false, 'default' => '1'], 'Is FAQ Active?')
             ->addColumn('creation_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Creation Time')
-            ->addColumn('update_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Update Time')            
+            ->addColumn('update_time', Table::TYPE_DATETIME, null, ['nullable' => false], 'Update Time')
             ->setComment('Infobeans FAQ');
 
         $installer->getConnection()->createTable($table);
 
         $installer->endSetup();
     }
-
 }
