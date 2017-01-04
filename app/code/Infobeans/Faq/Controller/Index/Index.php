@@ -7,6 +7,7 @@ class Index extends \Magento\Framework\App\Action\Action
 {
     /** @var  \Magento\Framework\View\Result\Page */
     protected $resultPageFactory;
+    
     /**
      * @param \Magento\Framework\App\Action\Context $context
      */
@@ -17,10 +18,12 @@ class Index extends \Magento\Framework\App\Action\Action
         parent::__construct($context);
     }
 
-    /** 
+    /**
+     * Faq Index, shows a list of faqs.
      *
      * @return \Magento\Framework\View\Result\PageFactory
      */
+    
     public function execute()
     {
       

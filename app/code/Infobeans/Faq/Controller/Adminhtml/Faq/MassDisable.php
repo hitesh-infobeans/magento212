@@ -20,8 +20,8 @@ class MassDisable  extends \Magento\Backend\App\Action
      * @var CollectionFactory
      */
     protected $collectionFactory;
-
-
+ 
+    
     /**
      * @param Context $context
      * @param Filter $filter
@@ -33,12 +33,14 @@ class MassDisable  extends \Magento\Backend\App\Action
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
+    
     /**
      * Execute action
      *
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws \Magento\Framework\Exception\LocalizedException|\Exception
      */
+    
     public function execute()
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());

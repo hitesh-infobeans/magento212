@@ -5,9 +5,17 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Magento_Backend::content">
                     <resource id="Infobeans_Faq::faq_content" title="Faq" sortOrder="10" >
-                        <resource id="Infobeans_Faq::faq" title="Faqs" sortOrder="40">
-                            <resource id="Infobeans_Faq::save" title="Save Faq" sortOrder="10" />
-                            <resource id="Infobeans_Faq::faq_delete" title="Delete Faq" sortOrder="20" />
+                        <resource id="Infobeans_Faq::faq" title="Faqs" sortOrder="40" />                            
+                         <resource id="Infobeans_Faq::category" title="Category" sortOrder="40" /> 
+                    </resource>
+                   
+                </resource> 
+            </resource>
+             <resource id="Magento_Backend::admin">
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Infobeans_Faq::config" title="Infobeans Config" sortOrder="50" />
                         </resource>
                     </resource>
                 </resource>

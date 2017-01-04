@@ -4,9 +4,7 @@ namespace Infobeans\Faq\Api\Data;
 
 interface FaqInterface
 {
-    /**
-     * Constants for keys of data array. Identical to the name of the getter in snake case
-     */
+    
     const FAQ_ID       = 'faq_id';    
     const TITLE         = 'title';
     const CONTENT       = 'content';
@@ -60,8 +58,7 @@ interface FaqInterface
     /**
      * Set ID
      *
-     * @param int $id
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param int $id     
      */
     public function setId($id);
 
@@ -69,40 +66,35 @@ interface FaqInterface
     /**
      * Set title
      *
-     * @param string $title
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param string $title     
      */
     public function setTitle($title);
 
     /**
      * Set content
      *
-     * @param string $content
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param string $content     
      */
     public function setContent($content);
 
     /**
      * Set creation time
      *
-     * @param string $creationTime
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param string $creationTime     
      */
     public function setCreationTime($creationTime);
 
     /**
      * Set update time
      *
-     * @param string $updateTime
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param string $updateTime     
      */
     public function setUpdateTime($updateTime);
 
     /**
      * Set is active
      *
-     * @param int|bool $isActive
-     * @return \Ashsmith\Blog\Api\Data\PostInterface
+     * @param int|bool $isActive    
      */
     public function setIsActive($isActive);
 }

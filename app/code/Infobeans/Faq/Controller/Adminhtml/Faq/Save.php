@@ -5,21 +5,20 @@ use Magento\Backend\App\Action;
 use Magento\TestFramework\ErrorLog\Logger;
 
 class Save extends \Magento\Backend\App\Action
-{
-
-    
-    public function __construct(Action\Context $context)
-    {
-        parent::__construct($context);
-    }
-
-     
+{ 
+    /**
+     * {@inheritdoc}
+     */ 
     protected function _isAllowed()
     {
-        return $this->_authorization->isAllowed('Infobeans_Faq::save');
+        return $this->_authorization->isAllowed('Infobeans_Faq::faq');
     }
 
-     
+    /**
+     * Save action
+     *
+     * @return \Magento\Framework\Controller\ResultInterface
+     */ 
     public function execute()
     {
        

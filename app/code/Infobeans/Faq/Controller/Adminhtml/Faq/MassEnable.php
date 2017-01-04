@@ -7,7 +7,7 @@ use Infobeans\Faq\Model\ResourceModel\Faq\CollectionFactory;
 use Magento\Framework\Controller\ResultFactory;
 
 /**
- * Class MassDisable
+ * Class MassEnable
  */
 class MassEnable extends \Magento\Backend\App\Action
 {
@@ -16,9 +16,9 @@ class MassEnable extends \Magento\Backend\App\Action
      */
     protected $filter;
 
-    /**
+     /**
      * @var CollectionFactory
-     */
+     */ 
     protected $collectionFactory;
 
 
@@ -26,13 +26,14 @@ class MassEnable extends \Magento\Backend\App\Action
      * @param Context $context
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
-     */
+     */ 
     public function __construct(Context $context, Filter $filter, CollectionFactory $collectionFactory)
     {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
         parent::__construct($context);
     }
+     
     /**
      * Execute action
      *

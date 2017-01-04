@@ -1,5 +1,6 @@
-<h1><?php echo __('Faqs') ?></h1>
+<?php /** @var $block \Infobeans\Faq\Block\FaqList */ ?>
 <ul class="faq-list">
+<?php /** @var $faq \Infobeans\Faq\Model\Faq */ ?>    
 <?php foreach ($block->getFaqs() as $faq): ?>
     <li class="faq-list-item">
         <h3 class="faq-item-title accordion">

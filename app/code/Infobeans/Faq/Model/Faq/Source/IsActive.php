@@ -4,15 +4,15 @@ namespace Infobeans\Faq\Model\Faq\Source;
 class IsActive implements \Magento\Framework\Data\OptionSourceInterface
 {
     /**
-     * @var \Ashsmith\Blog\Model\Post
+     * @var \Infobeans\Faq\Model\Faq
      */
     protected $faq;
 
-    /**
+     /**
      * Constructor
      *
-     * @param \Ashsmith\Blog\Model\Post $post
-     */
+     * @param \Infobeans\Faq\Model\Faq $faq
+     */ 
     public function __construct(\Infobeans\Faq\Model\Faq $faq)
     {
         $this->faq = $faq;

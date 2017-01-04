@@ -8,17 +8,26 @@ use Magento\Framework\UrlInterface;
 
 class FaqActions extends Column
 {
-    
+    /** Url path */
     const FAQ_URL_PATH_EDIT = 'faq/faq/edit';
     const FAQ_URL_PATH_DELETE = 'faq/faq/delete';
 
      
     protected $urlBuilder;
 
-   
-    private $editUrl;
+    /**
+     * @var string
+     */
+    protected $editUrl;
 
-    
+     /**
+     * @param ContextInterface $context
+     * @param UiComponentFactory $uiComponentFactory
+     * @param UrlInterface $urlBuilder
+     * @param array $components
+     * @param array $data
+     * @param string $editUrl
+     */
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,

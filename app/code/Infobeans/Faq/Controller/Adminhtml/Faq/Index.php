@@ -6,9 +6,16 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Backend\App\Action
 {
- 
+    
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
  
+    /**
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     */    
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory
@@ -17,9 +24,14 @@ class Index extends \Magento\Backend\App\Action
         $this->resultPageFactory = $resultPageFactory;
     }
 
-    
+     /**
+     * Index action
+     *
+     * @return \Magento\Backend\Model\View\Result\Page
+     */
     public function execute()
     { 
+        /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
         $resultPage->setActiveMenu('Infobeans_Faq::faq');
         $resultPage->addBreadcrumb(__('Faq'), __('Faq'));
@@ -29,7 +41,11 @@ class Index extends \Magento\Backend\App\Action
         return $resultPage;
     }
 
-     
+    /**
+     * Is the user allowed to view the faq grid.
+     *
+     * @return bool
+     */ 
     protected function _isAllowed()
     {
         return $this->_authorization->isAllowed('Infobeans_Faq::faq');

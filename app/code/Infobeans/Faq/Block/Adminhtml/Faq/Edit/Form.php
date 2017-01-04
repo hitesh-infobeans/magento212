@@ -2,14 +2,14 @@
 namespace Infobeans\Faq\Block\Adminhtml\Faq\Edit;
 
 /**
- * Adminhtml blog post edit form
- */
+ * Adminhtml faq edit form
+ */ 
 class Form extends \Magento\Backend\Block\Widget\Form\Generic
 {
 
     /**
      * @var \Magento\Store\Model\System\Store
-     */
+     */  
     protected $_systemStore;
 
     /**
@@ -35,7 +35,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * Init form
      *
      * @return void
-     */
+     */ 
     protected function _construct()
     {
         parent::_construct();
@@ -47,13 +47,13 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * Prepare form
      *
      * @return $this
-     */
+     */ 
     protected function _prepareForm()
     {
-        /** @var \Ashsmith\Blog\Model\Post $model */
+        
         $model = $this->_coreRegistry->registry('faq_faq');
 
-        /** @var \Magento\Framework\Data\Form $form */
+        
         $form = $this->_formFactory->create(
             ['data' => ['id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post']]
         );
