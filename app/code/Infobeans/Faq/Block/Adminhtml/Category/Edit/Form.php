@@ -1,5 +1,5 @@
 <?php
-namespace Infobeans\Faq\Block\Adminhtml\Faq\Edit;
+namespace Infobeans\Faq\Block\Adminhtml\Category\Edit;
 
 /**
  * Adminhtml faq edit form
@@ -11,13 +11,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      * @var \Magento\Store\Model\System\Store
      */
     protected $_systemStore;
-    
-    protected $_categoryCollection;
-    /**
-     * @var \Magento\Cms\Model\Wysiwyg\Config
-     */
-    protected $_wysiwygConfig; 
-    
+
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -31,13 +25,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Data\FormFactory $formFactory,
         \Magento\Store\Model\System\Store $systemStore,
-        \Infobeans\Faq\Model\ResourceModel\Category\Collection $categoryCollection,  
-        \Magento\Cms\Model\Wysiwyg\Config $wysiwygConfig,    
         array $data = []
     ) {
         $this->_systemStore = $systemStore;
-        $this->_categoryCollection = $categoryCollection;
-        $this->_wysiwygConfig = $wysiwygConfig;
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
@@ -49,8 +39,9 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('faq_form');
-        $this->setTitle(__('Faq Information'));
+         
+        $this->setId('category_form');
+        $this->setTitle(__('Category Information'));
     }
 
     /**
@@ -60,29 +51,29 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
      */
     protected function _prepareForm()
     {
-        
-        $model = $this->_coreRegistry->registry('faq_faq');
-
+      
+        $model = $this->_coreRegistry->registry('faq_category');
+ 
         
         $form = $this->_formFactory->create(
             ['data' => ['id' => 'edit_form', 'action' => $this->getData('action'), 'method' => 'post']]
         );
 
-        $form->setHtmlIdPrefix('faq_');
+        $form->setHtmlIdPrefix('category_');
 
         $fieldset = $form->addFieldset(
             'base_fieldset',
             ['legend' => __('General Information'), 'class' => 'fieldset-wide']
         );
-
-        if ($model->getFaqId()) {
-            $fieldset->addField('faq_id', 'hidden', ['name' => 'faq_id']);
+       
+        if ($model->getId()) {
+            $fieldset->addField('category_id', 'hidden', ['name' => 'category_id']);
         }
 
         $fieldset->addField(
-            'title',
+            'category_name',
             'text',
-            ['name' => 'title', 'label' => __('Title'), 'title' => __('Title'), 'required' => true]
+            ['name' => 'category_name', 'label' => __('Category Name'), 'title' => __('Category Name'), 'required' => true]
         );
 
         
@@ -100,45 +91,11 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         if (!$model->getId()) {
             $model->setData('is_active', '1');
         }
-        
-        $categories[] = ['label' => __('Please select'), 'value' => 0];
-        $collection = $this->_categoryCollection
-            ->setOrder('sort_order');
-           
-
-        foreach($collection as $item) {
-            $categories[] = array(
-                'label' => $item->getCategoryName() . ($item->getIsActive() ? '' : ' ('.__('Disabled').')' ),
-                'value' => $item->getId() ,
-            );
-        }
-        
-        
-        $field = $fieldset->addField(
-            'category_id',
-            'select',
-            [
-                'name' => 'category_id',
-                'label' => __('Category'),
-                'title' => __('Category'),
-                'values' => $categories, 
-                'style' => 'width:100%',
-            ]
-        );
-        
 
         $fieldset->addField(
-            'content',
-            'editor',
-            [
-                'name' => 'content',
-                'label' => __('Content'),
-                'title' => __('Content'),
-                'style' => 'height:36em',
-                'required' => true,
-                'config' => $this->_wysiwygConfig->getConfig()
-                
-            ]
+            'sort_order',
+            'text',
+            ['name' => 'sort_order', 'label' => __('Sort Order'), 'title' => __('Sort Order'), 'required' => true]
         );
 
         $form->setValues($model->getData());

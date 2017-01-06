@@ -1,5 +1,5 @@
 <?php
-namespace Infobeans\Faq\Block\Adminhtml\Faq;
+namespace Infobeans\Faq\Block\Adminhtml\Category;
 
 class Edit extends \Magento\Backend\Block\Widget\Form\Container
 {
@@ -31,14 +31,15 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     protected function _construct()
     {
-        $this->_objectId = 'faq_id';
+        $this->_objectId = 'category_id';
         $this->_blockGroup = 'Infobeans_Faq';
-        $this->_controller = 'adminhtml_faq';
-        
+        $this->_controller = 'adminhtml_category';
+
         parent::_construct();
 
-        if ($this->_isAllowedAction('Infobeans_Faq::faq')) {
-            $this->buttonList->update('save', 'label', __('Save Faq'));
+        if ($this->_isAllowedAction('Infobeans_Faq::category')) {
+            
+            $this->buttonList->update('save', 'label', __('Save Category'));
             $this->buttonList->add(
                 'saveandcontinue',
                 [
@@ -56,11 +57,13 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
             $this->buttonList->remove('save');
         }
 
-        if ($this->_isAllowedAction('Infobeans_Faq::faq')) {
+        if ($this->_isAllowedAction('Infobeans_Faq::category')) {
             $this->buttonList->update('delete', 'label', __('Delete'));
         } else {
             $this->buttonList->remove('delete');
         }
+        
+        
     }
 
     /**
@@ -70,10 +73,11 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     public function getHeaderText()
     {
-        if ($this->_coreRegistry->registry('faq_faq')->getId()) {
-            return __("Edit Faq '%1'", $this->escapeHtml($this->_coreRegistry->registry('faq_faq')->getTitle()));
+         
+        if ($this->_coreRegistry->registry('category')->getId()) {
+            return __("Edit Category '%1'", $this->escapeHtml($this->_coreRegistry->registry('category')->getCategoryName()));
         } else {
-            return __('New Faq');
+            return __('New Category');
         }
     }
 
