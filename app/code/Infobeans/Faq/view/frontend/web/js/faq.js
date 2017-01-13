@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 
-require(['jquery'], function ($) {
+require([
+            'jquery',
+            'jquery/ui'
+        ], function ($) {
     $(document).ready(function () {
-    
-        var acc = document.getElementsByClassName("accordion");
+         $( "#accordion" ).accordion();
+      /*  var acc = document.getElementsByClassName("accordion");
         var i;
 
         for (i = 0; i < acc.length; i++) {
@@ -15,6 +18,7 @@ require(['jquery'], function ($) {
                 this.classList.toggle("active");
                 this.nextElementSibling.classList.toggle("show");
             }
-        }
+        }*/
     });
+     
 });

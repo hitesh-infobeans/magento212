@@ -1,0 +1,68 @@
+<?php
+/**
+ * Faq Categories List
+ *
+ * @var $block \Infobeans\Faq\Block\Sidebar\Category
+ */
+?>
+<?php $items = $this->getCategories(); ?>
+
+<?php if (count($items)) {  
+    
+    ?>
+
+<div> 
+	<ul>
+	<?php
+		$level = 0;
+		$first = true;
+		foreach($items as $item) { ?>
+			 
+		    <li>
+                        <a href="javascript:;" onclick="fetchFaq('<?php echo $item->getId();?>')">
+			    <?php echo $block->escapeHtml($item->getCategoryName()) ?>
+			</a>
+	        <?php
+			 
+		}
+   	?>
+	</ul>
+</div>
+<?php } ?>
+<script>
+ function fetchFaq(categoryId){
+        require([
+            'jquery',
+            'jquery/ui'
+        ], function($){
+            
+            var accordionOptions = {
+                header: '.event',
+                collapsible: true,
+                active: false,
+                animate: {duration: 150}
+            };
+            
+            
+            $.ajax({
+                    url: "<?php echo $this->getBaseUrl(); ?>faq/ajax/index",
+                    method: 'POST',
+                    showLoader: true,
+                    data: { 
+                        category_id: categoryId,                        
+                    },
+                    success: function (response) {
+                   $("#accordion").accordion("destroy"); 
+                    $('#faq-list').html(response);
+                        
+                     $("#accordion").accordion({ 
+                        heightStyle: "content"
+                     });
+
+                    }
+                });
+            
+        });
+
+    }
+</script>    

@@ -12,6 +12,7 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
      */
     protected $_faqCollectionFactory;
     
+    protected $_categoryCollection;
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
@@ -30,10 +31,12 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         \Magento\Framework\View\Element\Template\Context $context,
         \Infobeans\Faq\Model\ResourceModel\Faq\CollectionFactory $faqCollectionFactory,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Infobeans\Faq\Model\ResourceModel\Category\Collection $categoryCollection,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->_faqCollectionFactory = $faqCollectionFactory;
+        $this->_categoryCollection = $categoryCollection;
         $this->scopeConfig = $scopeConfig;
     }
     
@@ -124,10 +127,21 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
      */
     public function getFaqs()
     {
+        $catId = $this->getRequest()->getPost('category_id');
+        
+       if(!$catId)
+       {
+           $categoryCollection = $this->_categoryCollection 
+                ->setOrder('sort_order')
+                ->getFirstItem();
+           $catId=$categoryCollection->getId();
+       }   
+        
         if (!$this->hasData('faqs')) {
             $faqs = $this->_faqCollectionFactory
                 ->create()
                 ->addFilter('is_active', 1)
+                ->addFilter('category_id',$catId)    
                 ->addOrder(
                     FaqInterface::CREATION_TIME,
                     FaqCollection::SORT_ORDER_DESC
@@ -138,6 +152,8 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         }
         return $this->getData('faqs');
     }
+    
+    
 
     /**
      * Return identifiers for produced content
