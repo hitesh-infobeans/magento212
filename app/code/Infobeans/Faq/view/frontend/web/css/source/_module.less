@@ -27,6 +27,7 @@ div.panel.show {
     position: relative;
 }
 .faq-list .ui-icon  {
+    
     background-image: url("@{baseDir}images/ui-icons_444444_256x240.png");
 }
 
@@ -70,4 +71,28 @@ div.panel.show {
     margin-bottom:0px;
     margin-top: 0px; 
     
+}
+
+.faq-category li {
+    
+    border: 1px solid #ccc;
+    height: 24px;
+    list-style: outside none none;
+    padding: 6px;
+}
+
+.faq-category li:hover{
+    background: #eee none repeat scroll 0 0;
+}
+
+.faq-category li.active{
+    background: #eee none repeat scroll 0 0;
+}
+
+.faq-category li.active a{
+    color:#000;
+}
+
+.faq-list pager .current{
+   background:#ccc; 
 }

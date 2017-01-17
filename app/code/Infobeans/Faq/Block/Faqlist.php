@@ -40,6 +40,19 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         $this->scopeConfig = $scopeConfig;
     }
     
+     /**
+     * Return Record Per Page
+     * @return \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    
+    public function getRecordPerPage()
+    {
+        return $this->scopeConfig->getValue(
+            'faq_section/general/record_per_page',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+    }
+    
     /**
      * Return Page Title
      * @return \Magento\Framework\App\Config\ScopeConfigInterface
@@ -120,6 +133,9 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
         if ($metaDescription!="") {
             $this->pageConfig->setDescription($metaDescription);
         }
+        
+       
+        
     }
     
     /**
@@ -129,26 +145,45 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
     {
         $catId = $this->getRequest()->getPost('category_id');
         
-       if(!$catId)
-       {
+          $page=($this->getRequest()->getPost('page'))? $this->getRequest()->getPost('page') : 1;
+        //get values of current limit
+         $pageSize=($this->getRecordPerPage())? $this->getRecordPerPage() : 3;
+
+        
+        if(!$catId)
+        {
            $categoryCollection = $this->_categoryCollection 
                 ->setOrder('sort_order')
                 ->getFirstItem();
            $catId=$categoryCollection->getId();
-       }   
+        }   
         
         if (!$this->hasData('faqs')) {
             $faqs = $this->_faqCollectionFactory
                 ->create()
-                ->addFilter('is_active', 1)
+                ->addFilter('is_active',1)
                 ->addFilter('category_id',$catId)    
                 ->addOrder(
                     FaqInterface::CREATION_TIME,
                     FaqCollection::SORT_ORDER_DESC
-                );
+                )
+                ->setPageSize(3)
+                ->setCurPage($page)
+                ->load();    
             
             
             $this->setData('faqs', $faqs);
+            
+             $pager = $this->getLayout()->createBlock(
+            'Magento\Theme\Block\Html\Pager',
+            'infobeans.faq.pager'
+        )->setTemplate('Infobeans_Faq::pager.phtml')
+            ->setAvailableLimit(array($pageSize=>$pageSize))->setShowPerPage(true)->setCollection(
+            $faqs
+        );
+        $this->setChild('pager', $pager); 
+            
+            
         }
         return $this->getData('faqs');
     }
@@ -164,4 +199,11 @@ class Faqlist extends \Magento\Framework\View\Element\Template implements
     {
         return [\Infobeans\Faq\Model\Faq::CACHE_TAG . '_' . 'list'];
     }
+    
+    public function getPagerHtml()
+    {
+        return $this->getChildHtml('pager');
+    }
+    
+    
 }
